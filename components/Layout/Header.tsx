@@ -7,10 +7,12 @@ const rowdies = Rowdies({
 
 export default function Header() {
   return (
-    <div className="flex h-24 w-1/3 justify-center items-center bg-gradient-to-r from-blue-700 to-cyan-700 rounded-3xl my-2">
+    <div className="flex h-auto w-full justify-center items-center bg-slate-800 py-4 mb-10">
       <h1 className={rowdies.className}>
-        <p className="text-4xl text-center text-white">TO DO LIST</p>
-        <p className=" text-center text-white">
+        <p className="text-4xl text-center text-transparent bg-clip-text bg-gradient-to-br from-pink-400 to-blue-600 py-2">
+          TO DO LIST
+        </p>
+        <p className=" text-center text-transparent bg-clip-text bg-gradient-to-br from-pink-400 to-blue-600 mb-4">
           A simple to do list app made with Next.js and Nest.js
         </p>
       </h1>

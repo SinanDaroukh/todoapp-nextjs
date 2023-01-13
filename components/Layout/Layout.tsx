@@ -10,9 +10,9 @@ const Layout = ({ children }: any) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="flex flex-col items-center ">
+      <div className="flex flex-col items-center">
         <Header />
-        <main>{children}</main>
+        <main className="w-1/3">{children}</main>
         <Footer />
       </div>
     </div>

@@ -7,9 +7,9 @@ const rowdies = Rowdies({
 
 export default function Footer() {
   return (
-    <div className="flex h-20 w-1/3 justify-center items-center bg-gradient-to-r from-cyan-700 to-blue-700  fixed bottom-0 rounded-3xl my-2">
+    <div className="flex h-20 w-full justify-center items-center   bottom-0">
       <h1 className={rowdies.className}>
-        <p className=" text-center text-white">
+        <p className=" text-center text-lg text-transparent bg-clip-text bg-gradient-to-br from-pink-400 to-blue-600">
           Made with ❤️ by{" "}
           <a
             href="https://sinan.daroukh.fr"

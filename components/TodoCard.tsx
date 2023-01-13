@@ -1,23 +1,57 @@
-import { Rowdies } from "@next/font/google";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCheck, faTrash, faXmark } from "@fortawesome/free-solid-svg-icons";
+import { useDispatch } from "react-redux";
+import { deleteTodo, updateDoneStatus } from "../slices/todosSlice";
 
-const rowdies = Rowdies({
-  subsets: ["latin"],
-  weight: "400",
-});
+var classNames = require("classnames");
 
 export default function TodoCard({ obj }: any) {
+  const dispatch = useDispatch();
   return (
-    <div className={rowdies.className}>
-      <div className=" rounded-lg w-full bg-gray-500 bg-opacity-20 p-2 m-2">
-        <div className="flex items-center">
-          <div className="border-4 rounded-full text-center px-4 py-2 m-2">
-            <p>{obj.id}</p>
-          </div>
-          <p className="text-center px-4 py-2 m-2">Title : {obj.title}</p>
+    <div className="flex flex-col gap-5 rounded-lg w-full bg-slate-800 bg-opacity-40 my-5 py-4 text-white">
+      <p
+        className={classNames(
+          { "line-through": obj.done },
+          "font-bold text-center text-xl uppercase"
+        )}
+      >
+        {obj.title}
+      </p>
+      {obj.description && (
+        <div>
+          <hr className="w-12 h-1 mx-auto border-0 rounded  bg-zinc-500 opacity-40"></hr>
+          <p
+            className={classNames(
+              { "line-through": obj.done },
+              "italic text-center mt-4"
+            )}
+          >
+            {obj.description}
+          </p>
         </div>
-
-        <p>{obj.description}</p>
-        <p>{String(obj.done)}</p>
+      )}
+      <div className="flex pt-2 justify-around">
+        {obj.done ? (
+          <button
+            className="w-1/3 bg-violet-700 rounded-full py-1 hover:-translate-y-1 hover:scale-110 transition duration-300 ease-in-out"
+            onClick={() => dispatch(updateDoneStatus(obj.id))}
+          >
+            <FontAwesomeIcon icon={faXmark} />
+          </button>
+        ) : (
+          <button
+            className="w-1/3 bg-violet-700 rounded-full py-1 hover:-translate-y-1 hover:scale-110 transition duration-300 ease-in-out"
+            onClick={() => dispatch(updateDoneStatus(obj.id))}
+          >
+            <FontAwesomeIcon icon={faCheck} />
+          </button>
+        )}
+        <button
+          className="w-1/3 bg-red-700 rounded-full py-1 hover:-translate-y-1 hover:scale-110 transition duration-300 ease-in-out"
+          onClick={() => dispatch(deleteTodo(obj.id))}
+        >
+          <FontAwesomeIcon icon={faTrash} />
+        </button>
       </div>
     </div>
   );
